@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Prime Factorization</title>
 </head>
-<body>
+<script type="text/javascript">
+	function findPrimeNumber() {
+		text = document.getElementById("Number Box").value;
+		let input = parseInt(text);
+		let factors = {};
+		for (var i = 0; i < input; i++) {
+			if (i * input === input) {
+				console.log("i * input === input");
+				Push(i);
+			}
+			else
+			{
+				for (var j = 0; j < input; j++)
+				{
+					if(i * j === input)
+					{
+						Push.(j);
+					}
+				}
+			}
+		}
+		console.log(factors);
 
+	}
+</script>
+<body>
+<input type="text" id="Number Box" value="1"> </input>
+<button onclick="findPrimeNumber()">Push</button>
 </body>
 </html>
