@@ -7,29 +7,61 @@
 	function findPrimeNumber() {
 		text = document.getElementById("Number Box").value;
 		let input = parseInt(text);
-		let factors = {};
-		for (var i = 0; i < input; i++) {
-			if (i * input === input) {
-				console.log("i * input === input");
-				Push(i);
-			}
-			else
+		let factors =FindFactors(input);
+		let PrimeFactors = PrimeMyFactors(factors);
+		if(PrimeFactors.length > 0)
+		{
+		console.log("Primes are " + PrimeFactors);
+		PrimeString = PrimeFactors.join(", ");
+		newString = "The Prime Factors are " + PrimeString;
+		document.getElementById("Replace").innerHTML = newString;
+		}
+		else
+		{
+			document.getElementById("Replace").innerHTML = "There no prime Factors";
+		}
+	}
+	function FindFactors(_input)
+	{
+		let values = [];
+		for (var i = 0; i <= _input; i++) {
+			//if _input divided by i has no remainder
+			if(_input % i == 0)
 			{
-				for (var j = 0; j < input; j++)
+				//This prevents the input from being a factor, I.E. 10 being a factor of 10
+				if(_input !== i)
 				{
-					if(i * j === input)
+					values.push(i);
+				}
+			}
+		}
+		return values;
+	}
+	function PrimeMyFactors(_factors)
+	{
+		let Primes = [];
+		for (var i = 0; i < _factors.length; i++) {
+			if(_factors[i] > 1)
+			{
+				for(var k = 0; k < _factors[i]; k++)
+				{
+					if(_factors[i] %  k === 0) 
 					{
-						Push.(j);
+						break;
+					}
+					else
+					{
+						Primes.push(_factors[i]);
 					}
 				}
 			}
 		}
-		console.log(factors);
-
+		return Primes;
 	}
 </script>
 <body>
 <input type="text" id="Number Box" value="1"> </input>
 <button onclick="findPrimeNumber()">Push</button>
+<p id="Replace"> Will be replaced with prime factors</p>
 </body>
 </html>
